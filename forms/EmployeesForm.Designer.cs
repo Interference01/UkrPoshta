@@ -39,12 +39,15 @@
             this.pcClear = new System.Windows.Forms.PictureBox();
             this.cbPosition = new System.Windows.Forms.ComboBox();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
+            this.pcSave = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcClear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSave)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmployees
             // 
+            this.dgvEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployees.Location = new System.Drawing.Point(49, 136);
             this.dgvEmployees.Name = "dgvEmployees";
@@ -149,11 +152,28 @@
             this.cbDepartment.Size = new System.Drawing.Size(179, 29);
             this.cbDepartment.TabIndex = 12;
             // 
+            // pcSave
+            // 
+            this.pcSave.BackColor = System.Drawing.Color.Cornsilk;
+            this.pcSave.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pcSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pcSave.Image = global::UkrPoshta.Properties.Resources._285657_floppy_guardar_save_icon;
+            this.pcSave.Location = new System.Drawing.Point(1080, 9);
+            this.pcSave.Margin = new System.Windows.Forms.Padding(0);
+            this.pcSave.Name = "pcSave";
+            this.pcSave.Size = new System.Drawing.Size(25, 27);
+            this.pcSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcSave.TabIndex = 13;
+            this.pcSave.TabStop = false;
+            this.pcSave.MouseLeave += new System.EventHandler(this.pcSave_MouseLeave);
+            this.pcSave.MouseHover += new System.EventHandler(this.pcSave_MouseHover);
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 608);
+            this.Controls.Add(this.pcSave);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.cbPosition);
             this.Controls.Add(this.pcClear);
@@ -172,6 +192,7 @@
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcClear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +211,6 @@
         private PictureBox pcClear;
         private ComboBox cbPosition;
         private ComboBox cbDepartment;
+        private PictureBox pcSave;
     }
 }

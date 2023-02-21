@@ -121,4 +121,7 @@
   <data name="3792081_broom_halloween_magic_witch_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\3792081_broom_halloween_magic_witch_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="285657_floppy_guardar_save_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\285657_floppy_guardar_save_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

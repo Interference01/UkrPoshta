@@ -63,6 +63,16 @@ namespace UkrPoshta.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _285657_floppy_guardar_save_icon {
+            get {
+                object obj = ResourceManager.GetObject("285657_floppy_guardar_save_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _3792081_broom_halloween_magic_witch_icon {
             get {
                 object obj = ResourceManager.GetObject("3792081_broom_halloween_magic_witch_icon", resourceCulture);
