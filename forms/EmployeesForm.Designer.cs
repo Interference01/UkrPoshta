@@ -39,25 +39,23 @@
             this.pcClear = new System.Windows.Forms.PictureBox();
             this.cbPosition = new System.Windows.Forms.ComboBox();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
-            this.pcSave = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcClear)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcSave)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmployees
             // 
             this.dgvEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployees.Location = new System.Drawing.Point(49, 136);
+            this.dgvEmployees.Location = new System.Drawing.Point(49, 115);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.RowTemplate.Height = 25;
-            this.dgvEmployees.Size = new System.Drawing.Size(1027, 460);
+            this.dgvEmployees.Size = new System.Drawing.Size(1027, 481);
             this.dgvEmployees.TabIndex = 0;
             // 
             // bSearch
             // 
-            this.bSearch.Location = new System.Drawing.Point(949, 73);
+            this.bSearch.Location = new System.Drawing.Point(949, 52);
             this.bSearch.Name = "bSearch";
             this.bSearch.Size = new System.Drawing.Size(127, 30);
             this.bSearch.TabIndex = 1;
@@ -68,7 +66,7 @@
             // tbSearchName
             // 
             this.tbSearchName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbSearchName.Location = new System.Drawing.Point(49, 74);
+            this.tbSearchName.Location = new System.Drawing.Point(49, 53);
             this.tbSearchName.Name = "tbSearchName";
             this.tbSearchName.Size = new System.Drawing.Size(246, 29);
             this.tbSearchName.TabIndex = 2;
@@ -76,7 +74,7 @@
             // tbSearchLastName
             // 
             this.tbSearchLastName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbSearchLastName.Location = new System.Drawing.Point(303, 74);
+            this.tbSearchLastName.Location = new System.Drawing.Point(303, 53);
             this.tbSearchLastName.Name = "tbSearchLastName";
             this.tbSearchLastName.Size = new System.Drawing.Size(246, 29);
             this.tbSearchLastName.TabIndex = 3;
@@ -85,7 +83,7 @@
             // 
             this.lName.AutoSize = true;
             this.lName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lName.Location = new System.Drawing.Point(49, 36);
+            this.lName.Location = new System.Drawing.Point(49, 15);
             this.lName.Name = "lName";
             this.lName.Size = new System.Drawing.Size(35, 20);
             this.lName.TabIndex = 6;
@@ -95,7 +93,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(303, 36);
+            this.label1.Location = new System.Drawing.Point(303, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 7;
@@ -105,7 +103,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(555, 36);
+            this.label2.Location = new System.Drawing.Point(555, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 8;
@@ -115,7 +113,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(719, 36);
+            this.label3.Location = new System.Drawing.Point(719, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 9;
@@ -126,7 +124,7 @@
             this.pcClear.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pcClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pcClear.Image = global::UkrPoshta.Properties.Resources._3792081_broom_halloween_magic_witch_icon;
-            this.pcClear.Location = new System.Drawing.Point(904, 73);
+            this.pcClear.Location = new System.Drawing.Point(904, 52);
             this.pcClear.Name = "pcClear";
             this.pcClear.Size = new System.Drawing.Size(30, 30);
             this.pcClear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -138,7 +136,7 @@
             // 
             this.cbPosition.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbPosition.FormattingEnabled = true;
-            this.cbPosition.Location = new System.Drawing.Point(555, 74);
+            this.cbPosition.Location = new System.Drawing.Point(555, 53);
             this.cbPosition.Name = "cbPosition";
             this.cbPosition.Size = new System.Drawing.Size(158, 29);
             this.cbPosition.TabIndex = 11;
@@ -147,33 +145,16 @@
             // 
             this.cbDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(719, 74);
+            this.cbDepartment.Location = new System.Drawing.Point(719, 53);
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(179, 29);
             this.cbDepartment.TabIndex = 12;
-            // 
-            // pcSave
-            // 
-            this.pcSave.BackColor = System.Drawing.Color.Cornsilk;
-            this.pcSave.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pcSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pcSave.Image = global::UkrPoshta.Properties.Resources._285657_floppy_guardar_save_icon;
-            this.pcSave.Location = new System.Drawing.Point(1080, 9);
-            this.pcSave.Margin = new System.Windows.Forms.Padding(0);
-            this.pcSave.Name = "pcSave";
-            this.pcSave.Size = new System.Drawing.Size(25, 27);
-            this.pcSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcSave.TabIndex = 13;
-            this.pcSave.TabStop = false;
-            this.pcSave.MouseLeave += new System.EventHandler(this.pcSave_MouseLeave);
-            this.pcSave.MouseHover += new System.EventHandler(this.pcSave_MouseHover);
             // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 608);
-            this.Controls.Add(this.pcSave);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.cbPosition);
             this.Controls.Add(this.pcClear);
@@ -192,7 +173,6 @@
             this.Load += new System.EventHandler(this.EmployeesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcClear)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,6 +191,5 @@
         private PictureBox pcClear;
         private ComboBox cbPosition;
         private ComboBox cbDepartment;
-        private PictureBox pcSave;
     }
 }

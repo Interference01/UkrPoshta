@@ -1,5 +1,4 @@
 ﻿
-using System.Windows.Forms;
 using UkrPoshta.database;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -55,16 +54,6 @@ namespace UkrPoshta
             dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
                 "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
                 "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID");
-        }
-
-        private void pcSave_MouseHover(object sender, EventArgs e)
-        {
-            pcSave.BackColor = Color.Yellow;
-        }
-
-        private void pcSave_MouseLeave(object sender, EventArgs e)
-        {
-            pcSave.BackColor = Color.Cornsilk;
         }
     }
 }

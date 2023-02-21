@@ -30,44 +30,59 @@
         {
             this.lTop = new System.Windows.Forms.Label();
             this.bEmployees = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bUpdate = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lTop
             // 
             this.lTop.AutoSize = true;
-            this.lTop.Location = new System.Drawing.Point(12, 9);
+            this.lTop.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lTop.Location = new System.Drawing.Point(138, 9);
             this.lTop.Name = "lTop";
-            this.lTop.Size = new System.Drawing.Size(117, 15);
+            this.lTop.Size = new System.Drawing.Size(193, 25);
             this.lTop.TabIndex = 0;
             this.lTop.Text = "UkrPoshta вас вітає !";
             // 
             // bEmployees
             // 
             this.bEmployees.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bEmployees.Location = new System.Drawing.Point(101, 148);
+            this.bEmployees.Location = new System.Drawing.Point(156, 197);
             this.bEmployees.Name = "bEmployees";
             this.bEmployees.Size = new System.Drawing.Size(175, 60);
             this.bEmployees.TabIndex = 1;
-            this.bEmployees.Text = "Робітники";
+            this.bEmployees.Text = "Пошук";
             this.bEmployees.UseVisualStyleBackColor = true;
             this.bEmployees.Click += new System.EventHandler(this.bEmployees_Click);
             // 
-            // button2
+            // bUpdate
             // 
-            this.button2.Location = new System.Drawing.Point(101, 234);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 60);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdate.Location = new System.Drawing.Point(156, 289);
+            this.bUpdate.Name = "bUpdate";
+            this.bUpdate.Size = new System.Drawing.Size(175, 60);
+            this.bUpdate.TabIndex = 2;
+            this.bUpdate.Text = "Редагування";
+            this.bUpdate.UseVisualStyleBackColor = true;
+            this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(156, 379);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 60);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Зарплатна звітність";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 592);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(507, 592);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bUpdate);
             this.Controls.Add(this.bEmployees);
             this.Controls.Add(this.lTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -83,6 +98,7 @@
 
         private Label lTop;
         private Button bEmployees;
-        private Button button2;
+        private Button bUpdate;
+        private Button button1;
     }
 }

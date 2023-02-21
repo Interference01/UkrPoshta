@@ -1,4 +1,5 @@
 using UkrPoshta.database;
+using UkrPoshta.forms;
 
 namespace UkrPoshta
 {
@@ -14,10 +15,11 @@ namespace UkrPoshta
 
             var formControler = new FormContoler();
 
+            var updateForm = new UpdateForm();
             var employeesForm = new EmployeesForm();
-            var mainForm = new MainForm(formControler, employeesForm);
+            var mainForm = new MainForm(formControler, employeesForm, updateForm);
 
-            formControler.HomeForm = employeesForm;
+            formControler.HomeForm = mainForm;
             formControler.ShowHomeForm();
         }
     }
