@@ -17,31 +17,41 @@ namespace UkrPoshta
             dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
                 "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
                 "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID");
-            var tablePosition = Connection.Query("SELECT * FROM Positions");
-            for (int i = 0; i < tablePosition.Columns.Count; i++)
-            {
-                cbPosition.Items.Add(tablePosition.Columns[1].Container.ToString());
-            }
+
+            // settings comboBox Position
+            cbPosition.DataSource = Connection.Query("SELECT * FROM Positions");
+            cbPosition.ValueMember = "PositionID";
+            cbPosition.DisplayMember = "Name";
+            cbPosition.SelectedItem = null;
+
+
+            // settings comboBox Department
+            cbDepartment.DataSource = Connection.Query("SELECT * FROM Departments");
+            cbDepartment.ValueMember = "DepartmentID";
+            cbDepartment.DisplayMember = "Name";
+            cbDepartment.SelectedItem = null;
         }
 
         private void bSearch_Click(object sender, EventArgs e)
         {
-            var name = tbSearchName.Text;
-            var lastName = tbSearchLastName.Text;
-            // var position = tbSearchPosition.Text;
-            // var department = tbSearchDepartment.Text;
+            string name = tbSearchName.Text;
+            string lastName = tbSearchLastName.Text;
+            var positionID = cbPosition.SelectedValue == null ? "" : $" and p.PositionID = {cbPosition.SelectedValue}";
+            var departmentID = cbDepartment.SelectedValue == null ? "" : $" and d.DepartmentID ={cbDepartment.SelectedValue}";
+
             dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон, " +
                 "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
                 "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID " +
-                "WHERE e.Name LIKE '"+name+"%'  and e.LastName LIKE '"+lastName+ "%' and p.Name LIKE '%' and d.Name LIKE '%';");
+                "WHERE e.Name LIKE '"+ name +"%'  and e.LastName LIKE '"+ lastName +"%'" + positionID + departmentID);
         }
 
         private void pcClear_Click(object sender, EventArgs e)
         {
             tbSearchName.Text = "";
             tbSearchLastName.Text = "";
-            //tbSearchPosition.Text = "";
-            //tbSearchDepartment.Text = "";
+            cbDepartment.SelectedItem = null;
+            cbPosition.SelectedItem = null;
+
             dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
                 "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
                 "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID");
