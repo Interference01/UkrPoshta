@@ -23,11 +23,13 @@ namespace UkrPoshta.forms
         {
             var departmentID = cbDepartment.SelectedValue == null ? "" : cbDepartment.SelectedValue;
 
-            dgvSalary.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
-                "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу]" +
-                "  FROM Employees e join Departments d on e.DepartmentID=d.DepartmentID " +
+            dgvSalary.DataSource = Connection.Query("SELECT e.Name, e.LastName, p.Name, d.Name, e.Salary FROM Employees e " +
+                "join Departments d on e.DepartmentID=d.DepartmentID " +
                 "join Positions p on e.PositionID=p.PositionID " +
-                "WHERE d.DepartmentID = " + departmentID + "");
+                "WHERE d.DepartmentID =" + departmentID +
+                " UNION ALL " +
+                "SELECT NULL, NULL, NULL, 'Всього', SUM(e.Salary) FROM Employees e " +
+                "join Departments d on e.DepartmentID=d.DepartmentID WHERE d.DepartmentID =" + departmentID); 
         }
     }
 }
