@@ -73,6 +73,16 @@ namespace UkrPoshta.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2931166_arrow_back_undo_left_navigation_icon {
+            get {
+                object obj = ResourceManager.GetObject("2931166_arrow_back_undo_left_navigation_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _3792081_broom_halloween_magic_witch_icon {
             get {
                 object obj = ResourceManager.GetObject("3792081_broom_halloween_magic_witch_icon", resourceCulture);

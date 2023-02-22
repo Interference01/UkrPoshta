@@ -19,7 +19,7 @@ namespace UkrPoshta
             var employeesForm = new EmployeesForm();
             var mainForm = new MainForm(formControler, employeesForm, updateForm);
 
-            formControler.HomeForm = mainForm;
+            formControler.HomeForm = updateForm;
             formControler.ShowHomeForm();
         }
     }

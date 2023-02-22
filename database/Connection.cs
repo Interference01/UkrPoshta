@@ -31,7 +31,7 @@ namespace UkrPoshta.database
             }
         }
 
-        public static void UpdateTable(DataTable table)
+        public static void UpdateTables( string query, DataTable table)
         {
             try
             {
@@ -41,12 +41,13 @@ namespace UkrPoshta.database
 
                 sqlConnection.Open();
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Employees", sqlConnection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
 
                 SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
+
                 dataAdapter.UpdateCommand = builder.GetUpdateCommand();
-                dataAdapter.DeleteCommand= builder.GetDeleteCommand();
-                dataAdapter.InsertCommand= builder.GetInsertCommand();
+                dataAdapter.DeleteCommand = builder.GetDeleteCommand();
+                dataAdapter.InsertCommand = builder.GetInsertCommand();
 
                 dataAdapter.Update(table);
                 sqlConnection.Close();
@@ -56,5 +57,6 @@ namespace UkrPoshta.database
                 MessageBox.Show(es.Message);
             }
         }
+
     }
 }
