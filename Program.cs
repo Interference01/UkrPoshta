@@ -15,12 +15,12 @@ namespace UkrPoshta
 
             var formControler = new FormContoler();
 
-            var updateForm = new UpdateForm();
-            var employeesForm = new EmployeesForm();
-            var salaryForm = new SalaryForm();
-            var mainForm = new MainForm(formControler, employeesForm, updateForm);
+            var employeesForm = new EmployeesForm(formControler);
+            var updateForm = new UpdateForm(formControler);
+            var salaryForm = new SalaryForm(formControler);
+            var mainForm = new MainForm(formControler, employeesForm, updateForm, salaryForm);
 
-            formControler.HomeForm = salaryForm;
+            formControler.HomeForm = mainForm;
             formControler.ShowHomeForm();
         }
     }

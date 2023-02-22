@@ -33,7 +33,8 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgvPosition = new System.Windows.Forms.DataGridView();
             this.dgvDepartment = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bBack = new System.Windows.Forms.Button();
+            this.bRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartment)).BeginInit();
@@ -92,22 +93,36 @@
             this.dgvDepartment.Size = new System.Drawing.Size(303, 276);
             this.dgvDepartment.TabIndex = 5;
             // 
-            // button1
+            // bBack
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 46);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Назад";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bBack.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.bBack.Location = new System.Drawing.Point(12, 12);
+            this.bBack.Name = "bBack";
+            this.bBack.Size = new System.Drawing.Size(95, 46);
+            this.bBack.TabIndex = 6;
+            this.bBack.Text = "Назад";
+            this.bBack.UseVisualStyleBackColor = false;
+            this.bBack.Click += new System.EventHandler(this.bBack_Click);
+            // 
+            // bRefresh
+            // 
+            this.bRefresh.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.bRefresh.BackgroundImage = global::UkrPoshta.Properties.Resources._2849811_refresh_arrows_multimedia_media_icon1;
+            this.bRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bRefresh.Location = new System.Drawing.Point(1216, 12);
+            this.bRefresh.Name = "bRefresh";
+            this.bRefresh.Size = new System.Drawing.Size(51, 46);
+            this.bRefresh.TabIndex = 7;
+            this.bRefresh.UseVisualStyleBackColor = false;
+            this.bRefresh.Click += new System.EventHandler(this.bRefresh_Click);
             // 
             // UpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1380, 622);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bRefresh);
+            this.Controls.Add(this.bBack);
             this.Controls.Add(this.dgvDepartment);
             this.Controls.Add(this.dgvPosition);
             this.Controls.Add(this.dgvEmployee);
@@ -132,6 +147,7 @@
         private Splitter splitter1;
         private DataGridView dgvPosition;
         private DataGridView dgvDepartment;
-        private Button button1;
+        private Button bBack;
+        private Button bRefresh;
     }
 }

@@ -1,14 +1,15 @@
-﻿
-using UkrPoshta.database;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using UkrPoshta.database;
 
 namespace UkrPoshta
 {
     public partial class EmployeesForm : Form
     {
-        public EmployeesForm()
+        FormContoler formControler;
+
+        public EmployeesForm(FormContoler formContoler)
         {
             InitializeComponent();
+            this.formControler = formContoler;
         }
 
         private void EmployeesForm_Load(object sender, EventArgs e)
@@ -54,6 +55,11 @@ namespace UkrPoshta
             dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
                 "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
                 "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID");
+        }
+
+        private void bBack_Click(object sender, EventArgs e)
+        {
+            formControler.ShowHomeForm();
         }
     }
 }

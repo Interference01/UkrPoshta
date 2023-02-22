@@ -31,7 +31,7 @@
             this.lTop = new System.Windows.Forms.Label();
             this.bEmployees = new System.Windows.Forms.Button();
             this.bUpdate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bSalary = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lTop
@@ -66,22 +66,23 @@
             this.bUpdate.UseVisualStyleBackColor = true;
             this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
             // 
-            // button1
+            // bSalary
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(156, 379);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 60);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Зарплатна звітність";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bSalary.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bSalary.Location = new System.Drawing.Point(156, 379);
+            this.bSalary.Name = "bSalary";
+            this.bSalary.Size = new System.Drawing.Size(175, 60);
+            this.bSalary.TabIndex = 3;
+            this.bSalary.Text = "Зарплатна звітність";
+            this.bSalary.UseVisualStyleBackColor = true;
+            this.bSalary.Click += new System.EventHandler(this.bSalary_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(507, 592);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bSalary);
             this.Controls.Add(this.bUpdate);
             this.Controls.Add(this.bEmployees);
             this.Controls.Add(this.lTop);
@@ -99,6 +100,6 @@
         private Label lTop;
         private Button bEmployees;
         private Button bUpdate;
-        private Button button1;
+        private Button bSalary;
     }
 }

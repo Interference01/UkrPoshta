@@ -6,9 +6,12 @@ namespace UkrPoshta.forms
 {
     public partial class SalaryForm : Form
     {
-        public SalaryForm()
+        FormContoler formControler;
+
+        public SalaryForm(FormContoler formControler)
         {
             InitializeComponent();
+            this.formControler = formControler;
         }
 
         private void SalaryForm_Load(object sender, EventArgs e)
@@ -25,7 +28,8 @@ namespace UkrPoshta.forms
         {
             var departmentID = cbDepartment.SelectedValue == null ? "" : cbDepartment.SelectedValue;
 
-            dgvSalary.DataSource = Connection.Query("SELECT e.Name, e.LastName, p.Name, d.Name, e.Salary FROM Employees e " +
+            dgvSalary.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as Прізвище, p.Name as Посада, d.Name as Відділ, e.Salary as Оклад " +
+                "FROM Employees e " +
                 "join Departments d on e.DepartmentID=d.DepartmentID " +
                 "join Positions p on e.PositionID=p.PositionID " +
                 "WHERE d.DepartmentID =" + departmentID +
@@ -65,6 +69,11 @@ namespace UkrPoshta.forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void bBack_Click(object sender, EventArgs e)
+        {
+            formControler.ShowHomeForm();
         }
     }
 }
