@@ -31,7 +31,8 @@
             this.dgvSalary = new System.Windows.Forms.DataGridView();
             this.cbDepartment = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bSaveTXT = new System.Windows.Forms.Button();
+            this.bOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,14 +43,14 @@
             this.dgvSalary.Location = new System.Drawing.Point(22, 132);
             this.dgvSalary.Name = "dgvSalary";
             this.dgvSalary.RowTemplate.Height = 25;
-            this.dgvSalary.Size = new System.Drawing.Size(1044, 480);
+            this.dgvSalary.Size = new System.Drawing.Size(1094, 508);
             this.dgvSalary.TabIndex = 0;
             // 
             // cbDepartment
             // 
             this.cbDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(22, 73);
+            this.cbDepartment.Location = new System.Drawing.Point(22, 83);
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(236, 29);
             this.cbDepartment.TabIndex = 14;
@@ -59,27 +60,39 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(22, 47);
+            this.label3.Location = new System.Drawing.Point(22, 57);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 13;
             this.label3.Text = "Відділ";
             // 
-            // button2
+            // bSaveTXT
             // 
-            this.button2.Location = new System.Drawing.Point(299, 47);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 55);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Зберегти у .txt файл";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bSaveTXT.Location = new System.Drawing.Point(853, 57);
+            this.bSaveTXT.Name = "bSaveTXT";
+            this.bSaveTXT.Size = new System.Drawing.Size(119, 55);
+            this.bSaveTXT.TabIndex = 16;
+            this.bSaveTXT.Text = "Зберегти у .txt файл";
+            this.bSaveTXT.UseVisualStyleBackColor = true;
+            this.bSaveTXT.Click += new System.EventHandler(this.bSaveTXT_Click);
+            // 
+            // bOpenFolder
+            // 
+            this.bOpenFolder.Location = new System.Drawing.Point(997, 57);
+            this.bOpenFolder.Name = "bOpenFolder";
+            this.bOpenFolder.Size = new System.Drawing.Size(119, 55);
+            this.bOpenFolder.TabIndex = 17;
+            this.bOpenFolder.Text = "Відкрити папку";
+            this.bOpenFolder.UseVisualStyleBackColor = true;
+            this.bOpenFolder.Click += new System.EventHandler(this.bOpenFolder_Click);
             // 
             // SalaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1139, 652);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bOpenFolder);
+            this.Controls.Add(this.bSaveTXT);
             this.Controls.Add(this.cbDepartment);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvSalary);
@@ -99,6 +112,7 @@
         private DataGridView dgvSalary;
         private ComboBox cbDepartment;
         private Label label3;
-        private Button button2;
+        private Button bSaveTXT;
+        private Button bOpenFolder;
     }
 }
