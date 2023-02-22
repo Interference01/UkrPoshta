@@ -1,60 +1,40 @@
 ﻿using Microsoft.Data.SqlClient;
+using System.Configuration;
 using System.Data;
+using UkrPoshta.repository;
 
 namespace UkrPoshta.database
 {
-    internal static class Connection
+    internal class Connection : IRepository
     {
-        public static DataTable Query(string query)
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+
+        public DataTable GetTableFromDatabase(string query)
         {
-            try
-            {
-                string str1 = @"Data Source=DESKTOP-29T6DCB\SQLEXPRESS;Database=Ukrposhta;Trusted_Connection=True;TrustServerCertificate=True;";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
+            DataTable dataTable = new DataTable();
 
-                SqlConnection sqlConnection = new SqlConnection(str1);
+            sqlConnection.Open();
+            dataAdapter.Fill(dataTable);
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
-                DataTable dt = new DataTable();
-
-                sqlConnection.Open();
-                dataAdapter.Fill(dt);
-
-                sqlConnection.Close();
-                return dt;
-            }
-            catch (Exception es)
-            {
-                MessageBox.Show(es.Message);
-                return null;
-            }
+            sqlConnection.Close();
+            return dataTable;
         }
 
-        public static void UpdateTables( string query, DataTable table)
+        public void UpdateTables(string query, DataTable table)
         {
-            try
-            {
-                string str1 = @"Data Source=DESKTOP-29T6DCB\SQLEXPRESS;Database=Ukrposhta;Trusted_Connection=True;TrustServerCertificate=True;";
+            sqlConnection.Open();
 
-                SqlConnection sqlConnection = new SqlConnection(str1);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
 
-                sqlConnection.Open();
+            SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
+            dataAdapter.UpdateCommand = builder.GetUpdateCommand();
+            dataAdapter.DeleteCommand = builder.GetDeleteCommand();
+            dataAdapter.InsertCommand = builder.GetInsertCommand();
 
-                SqlCommandBuilder builder = new SqlCommandBuilder(dataAdapter);
-
-                dataAdapter.UpdateCommand = builder.GetUpdateCommand();
-                dataAdapter.DeleteCommand = builder.GetDeleteCommand();
-                dataAdapter.InsertCommand = builder.GetInsertCommand();
-
-                dataAdapter.Update(table);
-                sqlConnection.Close();
-            }
-            catch (Exception es)
-            {
-                MessageBox.Show(es.Message);
-            }
+            dataAdapter.Update(table);
+            sqlConnection.Close();
         }
-
     }
 }

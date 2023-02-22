@@ -11,13 +11,14 @@ namespace UkrPoshta
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize();
+            ApplicationConfiguration.Initialize(); // Сделать обработчик ошибок связанный именно с Connection_ классом 
 
-            var formControler = new FormContoler();
+            var formControler = new FormContoler(); // Зробити нормальний MessageBox in UpdateForm
+            var connection = new Connection();
 
-            var employeesForm = new EmployeesForm(formControler);
-            var updateForm = new UpdateForm(formControler);
-            var salaryForm = new SalaryForm(formControler);
+            var employeesForm = new EmployeesForm(formControler, connection);
+            var updateForm = new UpdateForm(formControler, connection);
+            var salaryForm = new SalaryForm(formControler, connection);
             var mainForm = new MainForm(formControler, employeesForm, updateForm, salaryForm);
 
             formControler.HomeForm = mainForm;

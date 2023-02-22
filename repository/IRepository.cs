@@ -2,7 +2,7 @@
 
 namespace UkrPoshta.repository
 {
-    internal interface IRepository
+    public interface IRepository
     {
         DataTable GetTableFromDatabase(string query);
 

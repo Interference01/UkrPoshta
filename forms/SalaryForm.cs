@@ -1,24 +1,26 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
 using UkrPoshta.database;
+using UkrPoshta.repository;
 
 namespace UkrPoshta.forms
 {
     public partial class SalaryForm : Form
     {
         FormContoler formControler;
+        IRepository repository;
 
-        public SalaryForm(FormContoler formControler)
+        public SalaryForm(FormContoler formControler, IRepository repository)
         {
             InitializeComponent();
             this.formControler = formControler;
+            this.repository = repository;
         }
 
         private void SalaryForm_Load(object sender, EventArgs e)
         {
-
             //Settings combobox departments
-            cbDepartment.DataSource = Connection.Query("SELECT * FROM Departments");
+            cbDepartment.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromDepartments());
             cbDepartment.ValueMember = "DepartmentID";
             cbDepartment.DisplayMember = "Name";
             cbDepartment.SelectedItem = null;
@@ -26,12 +28,9 @@ namespace UkrPoshta.forms
 
         private void cbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var departmentID = cbDepartment.SelectedValue == null ? "" : cbDepartment.SelectedValue;
+            var departmentID = cbDepartment.SelectedValue;
 
-            dgvSalary.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as Прізвище, p.Name as Посада, d.Name as Відділ, e.Salary as Оклад " +
-                "FROM Employees e " +
-                "join Departments d on e.DepartmentID=d.DepartmentID " +
-                "join Positions p on e.PositionID=p.PositionID " +
+            dgvSalary.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesSalary() +
                 "WHERE d.DepartmentID =" + departmentID +
                 " UNION ALL " +
                 "SELECT NULL, NULL, NULL, 'Всього', SUM(e.Salary) FROM Employees e " +
