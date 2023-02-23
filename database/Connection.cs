@@ -7,7 +7,7 @@ namespace UkrPoshta.database
 {
     internal class Connection : IRepository
     {
-        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString);
 
         public DataTable GetTableFromDatabase(string query)
         {

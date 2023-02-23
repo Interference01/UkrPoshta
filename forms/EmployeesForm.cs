@@ -36,10 +36,7 @@ namespace UkrPoshta
 
         private void pcClear_Click(object sender, EventArgs e)
         {
-            tbSearchName.Text = "";
-            tbSearchLastName.Text = "";
-            cbDepartment.SelectedItem = null;
-            cbPosition.SelectedItem = null;
+            SettingsComboBox();
 
             dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs());
         }

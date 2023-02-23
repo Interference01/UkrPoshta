@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="data\" />
+    <Compile Remove="data\reserveDatabase\**" />
+    <EmbeddedResource Remove="data\reserveDatabase\**" />
+    <None Remove="data\reserveDatabase\**" />
   </ItemGroup>
 
   <ItemGroup>

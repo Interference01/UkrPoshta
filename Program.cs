@@ -11,10 +11,11 @@ namespace UkrPoshta
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize(); // Сделать обработчик ошибок связанный именно с Connection_ классом 
+            ApplicationConfiguration.Initialize(); // Зробити вимикання програми ы запуск знов при натисканні кнопки "НАЗАД"
 
             var formControler = new FormContoler(); // Зробити нормальний MessageBox in UpdateForm
             var connection = new Connection();
+            var exceptionHandlerConnection = new DecoratorExeptionHandler(connection);
 
             var employeesForm = new EmployeesForm(formControler, connection);
             var updateForm = new UpdateForm(formControler, connection);
