@@ -1,34 +1,26 @@
-﻿
-using UkrPoshta.database;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using UkrPoshta.database;
+using UkrPoshta.repository;
 
 namespace UkrPoshta
 {
     public partial class EmployeesForm : Form
     {
-        public EmployeesForm()
+        FormContoler formControler;
+        IRepository repository;
+
+        public EmployeesForm(FormContoler formContoler, IRepository repository)
         {
             InitializeComponent();
+            this.formControler = formContoler;
+            this.repository = repository;
         }
+
 
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
-            dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
-                "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
-                "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID");
+            dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs());
 
-            // settings comboBox Position
-            cbPosition.DataSource = Connection.Query("SELECT * FROM Positions");
-            cbPosition.ValueMember = "PositionID";
-            cbPosition.DisplayMember = "Name";
-            cbPosition.SelectedItem = null;
-
-
-            // settings comboBox Department
-            cbDepartment.DataSource = Connection.Query("SELECT * FROM Departments");
-            cbDepartment.ValueMember = "DepartmentID";
-            cbDepartment.DisplayMember = "Name";
-            cbDepartment.SelectedItem = null;
+            SettingsComboBox();
         }
 
         private void bSearch_Click(object sender, EventArgs e)
@@ -38,22 +30,36 @@ namespace UkrPoshta
             var positionID = cbPosition.SelectedValue == null ? "" : $" and p.PositionID = {cbPosition.SelectedValue}";
             var departmentID = cbDepartment.SelectedValue == null ? "" : $" and d.DepartmentID ={cbDepartment.SelectedValue}";
 
-            dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон, " +
-                "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
-                "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID " +
+            dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs() +
                 "WHERE e.Name LIKE '"+ name +"%'  and e.LastName LIKE '"+ lastName +"%'" + positionID + departmentID);
         }
 
         private void pcClear_Click(object sender, EventArgs e)
         {
-            tbSearchName.Text = "";
-            tbSearchLastName.Text = "";
-            cbDepartment.SelectedItem = null;
+            SettingsComboBox();
+
+            dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs());
+        }
+
+        private void bBack_Click(object sender, EventArgs e)
+        {
+            formControler.ShowHomeForm();
+        }
+
+        private void SettingsComboBox()
+        {
+            // settings comboBox Positions
+            cbPosition.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromPositions());
+            cbPosition.ValueMember = "PositionID";
+            cbPosition.DisplayMember = "Name";
             cbPosition.SelectedItem = null;
 
-            dgvEmployees.DataSource = Connection.Query("SELECT e.Name as [Ім'я], e.LastName as [Прізвище], e.Address as Адреса, e.PhoneNumber as Телефон," +
-                "e.Salary as Оклад, e.DateBirthday as [Дата Народження], e.StartWorkDate as [Дата взяття на роботу], p.Name as [Назва Посади], d.Name as [Назва Відділу] " +
-                "FROM Employees e join Positions p on e.PositionID=p.PositionID join Departments d on e.DepartmentID=d.DepartmentID");
+
+            // settings comboBox Departments
+            cbDepartment.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromDepartments());
+            cbDepartment.ValueMember = "DepartmentID";
+            cbDepartment.DisplayMember = "Name";
+            cbDepartment.SelectedItem = null;
         }
     }
 }

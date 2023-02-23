@@ -28,70 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lTop = new System.Windows.Forms.Label();
-            this.bEmployees = new System.Windows.Forms.Button();
-            this.bUpdate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lTop = new Label();
+            bEmployees = new Button();
+            bUpdate = new Button();
+            bSalary = new Button();
+            SuspendLayout();
             // 
             // lTop
             // 
-            this.lTop.AutoSize = true;
-            this.lTop.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lTop.Location = new System.Drawing.Point(138, 9);
-            this.lTop.Name = "lTop";
-            this.lTop.Size = new System.Drawing.Size(193, 25);
-            this.lTop.TabIndex = 0;
-            this.lTop.Text = "UkrPoshta вас вітає !";
+            lTop.AutoSize = true;
+            lTop.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lTop.Location = new Point(138, 9);
+            lTop.Name = "lTop";
+            lTop.Size = new Size(193, 25);
+            lTop.TabIndex = 0;
+            lTop.Text = "UkrPoshta вас вітає !";
             // 
             // bEmployees
             // 
-            this.bEmployees.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bEmployees.Location = new System.Drawing.Point(156, 197);
-            this.bEmployees.Name = "bEmployees";
-            this.bEmployees.Size = new System.Drawing.Size(175, 60);
-            this.bEmployees.TabIndex = 1;
-            this.bEmployees.Text = "Пошук";
-            this.bEmployees.UseVisualStyleBackColor = true;
-            this.bEmployees.Click += new System.EventHandler(this.bEmployees_Click);
+            bEmployees.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            bEmployees.Location = new Point(156, 197);
+            bEmployees.Name = "bEmployees";
+            bEmployees.Size = new Size(175, 60);
+            bEmployees.TabIndex = 1;
+            bEmployees.Text = "Пошук";
+            bEmployees.UseVisualStyleBackColor = true;
+            bEmployees.Click += bEmployees_Click;
             // 
             // bUpdate
             // 
-            this.bUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdate.Location = new System.Drawing.Point(156, 289);
-            this.bUpdate.Name = "bUpdate";
-            this.bUpdate.Size = new System.Drawing.Size(175, 60);
-            this.bUpdate.TabIndex = 2;
-            this.bUpdate.Text = "Редагування";
-            this.bUpdate.UseVisualStyleBackColor = true;
-            this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
+            bUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdate.Location = new Point(156, 289);
+            bUpdate.Name = "bUpdate";
+            bUpdate.Size = new Size(175, 60);
+            bUpdate.TabIndex = 2;
+            bUpdate.Text = "Редагування";
+            bUpdate.UseVisualStyleBackColor = true;
+            bUpdate.Click += bUpdate_Click;
             // 
-            // button1
+            // bSalary
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(156, 379);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 60);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Зарплатна звітність";
-            this.button1.UseVisualStyleBackColor = true;
+            bSalary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            bSalary.Location = new Point(156, 379);
+            bSalary.Name = "bSalary";
+            bSalary.Size = new Size(175, 60);
+            bSalary.TabIndex = 3;
+            bSalary.Text = "Зарплатна звітність";
+            bSalary.UseVisualStyleBackColor = true;
+            bSalary.Click += bSalary_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 592);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.bUpdate);
-            this.Controls.Add(this.bEmployees);
-            this.Controls.Add(this.lTop);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(507, 592);
+            Controls.Add(bSalary);
+            Controls.Add(bUpdate);
+            Controls.Add(bEmployees);
+            Controls.Add(lTop);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "UkrPoshta";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -99,6 +99,6 @@
         private Label lTop;
         private Button bEmployees;
         private Button bUpdate;
-        private Button button1;
+        private Button bSalary;
     }
 }

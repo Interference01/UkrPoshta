@@ -6,12 +6,17 @@
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>data\4417103_cache_database_lightning_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="application\use-case\" />
-    <Folder Include="application\port\" />
-    <Folder Include="data\" />
+    <Compile Remove="data\reserveDatabase\**" />
+    <EmbeddedResource Remove="data\reserveDatabase\**" />
+    <None Remove="data\reserveDatabase\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="data\4417103_cache_database_lightning_icon.ico" />
   </ItemGroup>
 
   <ItemGroup>

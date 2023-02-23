@@ -33,6 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bSaveTXT = new System.Windows.Forms.Button();
             this.bOpenFolder = new System.Windows.Forms.Button();
+            this.bBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,17 +41,18 @@
             // 
             this.dgvSalary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSalary.Location = new System.Drawing.Point(22, 132);
+            this.dgvSalary.Location = new System.Drawing.Point(22, 98);
             this.dgvSalary.Name = "dgvSalary";
+            this.dgvSalary.ReadOnly = true;
             this.dgvSalary.RowTemplate.Height = 25;
-            this.dgvSalary.Size = new System.Drawing.Size(1094, 508);
+            this.dgvSalary.Size = new System.Drawing.Size(1094, 542);
             this.dgvSalary.TabIndex = 0;
             // 
             // cbDepartment
             // 
             this.cbDepartment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbDepartment.FormattingEnabled = true;
-            this.cbDepartment.Location = new System.Drawing.Point(22, 83);
+            this.cbDepartment.Location = new System.Drawing.Point(140, 49);
             this.cbDepartment.Name = "cbDepartment";
             this.cbDepartment.Size = new System.Drawing.Size(236, 29);
             this.cbDepartment.TabIndex = 14;
@@ -60,7 +62,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(22, 57);
+            this.label3.Location = new System.Drawing.Point(140, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 13;
@@ -68,9 +70,9 @@
             // 
             // bSaveTXT
             // 
-            this.bSaveTXT.Location = new System.Drawing.Point(853, 57);
+            this.bSaveTXT.Location = new System.Drawing.Point(853, 33);
             this.bSaveTXT.Name = "bSaveTXT";
-            this.bSaveTXT.Size = new System.Drawing.Size(119, 55);
+            this.bSaveTXT.Size = new System.Drawing.Size(119, 45);
             this.bSaveTXT.TabIndex = 16;
             this.bSaveTXT.Text = "Зберегти у .txt файл";
             this.bSaveTXT.UseVisualStyleBackColor = true;
@@ -78,19 +80,30 @@
             // 
             // bOpenFolder
             // 
-            this.bOpenFolder.Location = new System.Drawing.Point(997, 57);
+            this.bOpenFolder.Location = new System.Drawing.Point(997, 33);
             this.bOpenFolder.Name = "bOpenFolder";
-            this.bOpenFolder.Size = new System.Drawing.Size(119, 55);
+            this.bOpenFolder.Size = new System.Drawing.Size(119, 45);
             this.bOpenFolder.TabIndex = 17;
             this.bOpenFolder.Text = "Відкрити папку";
             this.bOpenFolder.UseVisualStyleBackColor = true;
             this.bOpenFolder.Click += new System.EventHandler(this.bOpenFolder_Click);
+            // 
+            // bBack
+            // 
+            this.bBack.Location = new System.Drawing.Point(22, 49);
+            this.bBack.Name = "bBack";
+            this.bBack.Size = new System.Drawing.Size(102, 29);
+            this.bBack.TabIndex = 18;
+            this.bBack.Text = "Назад";
+            this.bBack.UseVisualStyleBackColor = true;
+            this.bBack.Click += new System.EventHandler(this.bBack_Click);
             // 
             // SalaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1139, 652);
+            this.Controls.Add(this.bBack);
             this.Controls.Add(this.bOpenFolder);
             this.Controls.Add(this.bSaveTXT);
             this.Controls.Add(this.cbDepartment);
@@ -114,5 +127,6 @@
         private Label label3;
         private Button bSaveTXT;
         private Button bOpenFolder;
+        private Button bBack;
     }
 }

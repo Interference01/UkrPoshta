@@ -63,6 +63,26 @@ namespace UkrPoshta.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2849811_refresh_arrows_multimedia_media_icon {
+            get {
+                object obj = ResourceManager.GetObject("2849811_refresh_arrows_multimedia_media_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2849811_refresh_arrows_multimedia_media_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("2849811_refresh_arrows_multimedia_media_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _285657_floppy_guardar_save_icon {
             get {
                 object obj = ResourceManager.GetObject("285657_floppy_guardar_save_icon", resourceCulture);
