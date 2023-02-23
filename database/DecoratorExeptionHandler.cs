@@ -3,18 +3,18 @@ using UkrPoshta.repository;
 
 namespace UkrPoshta.database
 {
-    internal class DecoratorExeptionHandler : IRepository
+    internal class DecoratorExeptionHandler : IDBRepository
     {
-        IRepository repository;
-        public DecoratorExeptionHandler(IRepository repository)
+        IDBRepository repository;
+        public DecoratorExeptionHandler(IDBRepository repository)
         {
             this.repository = repository;
         }
-        public DataTable GetTableFromDatabase(string query)
+        public DataTable GetData(string query)
         {
             try
             {
-                return this.repository.GetTableFromDatabase(query);
+                return this.repository.GetData(query);
             }
             catch (Exception ex)
             {
@@ -23,11 +23,11 @@ namespace UkrPoshta.database
             }
         }
 
-        public void UpdateTables(string query, DataTable table)
+        public void Update(string query, DataTable table)
         {
             try
             {
-                this.repository.UpdateTables(query, table);
+                this.repository.Update(query, table);
             }
             catch (Exception ex)
             {

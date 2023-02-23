@@ -1,24 +1,26 @@
-﻿using UkrPoshta.database;
-using UkrPoshta.repository;
+﻿using UkrPoshta.repository;
 
 namespace UkrPoshta
 {
     public partial class EmployeesForm : Form
     {
-        FormContoler formControler;
-        IRepository repository;
+        private readonly FormContoler formControler;
+        private readonly IRepoEmployees repoEmployees;
+        private readonly IRepoDepartaments repoDepartaments;
+        private readonly IRepoPositions repoPositions;
 
-        public EmployeesForm(FormContoler formContoler, IRepository repository)
+        public EmployeesForm(FormContoler formControler, IRepoEmployees repoEmployees, IRepoPositions repoPositions, IRepoDepartaments repoDepartaments) 
         {
             InitializeComponent();
-            this.formControler = formContoler;
-            this.repository = repository;
+            this.formControler = formControler;
+            this.repoEmployees = repoEmployees;            this.repoDepartaments = repoDepartaments;
+            this.repoPositions = repoPositions;
         }
 
 
         private void EmployeesForm_Load(object sender, EventArgs e)
         {
-            dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs());
+            dgvEmployees.DataSource = repoEmployees.GetEmployeesData();
 
             SettingsComboBox();
         }
@@ -27,18 +29,20 @@ namespace UkrPoshta
         {
             string name = tbSearchName.Text;
             string lastName = tbSearchLastName.Text;
-            var positionID = cbPosition.SelectedValue == null ? "" : $" and p.PositionID = {cbPosition.SelectedValue}";
-            var departmentID = cbDepartment.SelectedValue == null ? "" : $" and d.DepartmentID ={cbDepartment.SelectedValue}";
+            var positionID = cbPosition.SelectedValue == null ? 0 : (int)cbPosition.SelectedValue;
+            var departmentID = cbDepartment.SelectedValue == null ? 0 : (int)cbDepartment.SelectedValue;
 
-            dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs() +
-                "WHERE e.Name LIKE '"+ name +"%'  and e.LastName LIKE '"+ lastName +"%'" + positionID + departmentID);
+            dgvEmployees.DataSource = repoEmployees.Search(name, lastName, positionID, departmentID);
         }
 
         private void pcClear_Click(object sender, EventArgs e)
         {
             SettingsComboBox();
 
-            dgvEmployees.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesAs());
+            tbSearchName.Text = "";
+            tbSearchLastName.Text = "";
+
+            dgvEmployees.DataSource = repoEmployees.GetEmployeesData();
         }
 
         private void bBack_Click(object sender, EventArgs e)
@@ -49,14 +53,14 @@ namespace UkrPoshta
         private void SettingsComboBox()
         {
             // settings comboBox Positions
-            cbPosition.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromPositions());
+            cbPosition.DataSource = repoPositions.GetPositions();
             cbPosition.ValueMember = "PositionID";
             cbPosition.DisplayMember = "Name";
             cbPosition.SelectedItem = null;
 
 
             // settings comboBox Departments
-            cbDepartment.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromDepartments());
+            cbDepartment.DataSource = repoDepartaments.GetDepartments();
             cbDepartment.ValueMember = "DepartmentID";
             cbDepartment.DisplayMember = "Name";
             cbDepartment.SelectedItem = null;

@@ -5,11 +5,11 @@ using UkrPoshta.repository;
 
 namespace UkrPoshta.database
 {
-    internal class Connection : IRepository
+    internal class DBRepository : IDBRepository
     {
         SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString);
 
-        public DataTable GetTableFromDatabase(string query)
+        public DataTable GetData(string query)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlConnection);
             DataTable dataTable = new DataTable();
@@ -21,7 +21,7 @@ namespace UkrPoshta.database
             return dataTable;
         }
 
-        public void UpdateTables(string query, DataTable table)
+        public void Update(string query, DataTable table)
         {
             sqlConnection.Open();
 

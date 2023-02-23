@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Windows.Forms;
 using UkrPoshta.database;
 using UkrPoshta.repository;
 
@@ -7,20 +6,24 @@ namespace UkrPoshta.forms
 {
     public partial class SalaryForm : Form
     {
-        FormContoler formControler;
-        IRepository repository;
+        private readonly FormContoler formControler;
+        private readonly IRepoEmployees repoEmployees;
+        private readonly IRepoPositions repoPositions;
+        private readonly IRepoDepartaments repoDepartments;
 
-        public SalaryForm(FormContoler formControler, IRepository repository)
+        public SalaryForm(FormContoler formControler, IRepoEmployees repoEmployees, IRepoPositions repoPositions, IRepoDepartaments repoDepartments)
         {
             InitializeComponent();
             this.formControler = formControler;
-            this.repository = repository;
+            this.repoEmployees = repoEmployees;
+            this.repoPositions = repoPositions;
+            this.repoDepartments = repoDepartments;
         }
 
         private void SalaryForm_Load(object sender, EventArgs e)
         {
             //Settings combobox departments
-            cbDepartment.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromDepartments());
+            cbDepartment.DataSource = repoDepartments.GetDepartments();
             cbDepartment.ValueMember = "DepartmentID";
             cbDepartment.DisplayMember = "Name";
             cbDepartment.SelectedItem = null;
@@ -30,11 +33,7 @@ namespace UkrPoshta.forms
         {
             var departmentID = cbDepartment.SelectedValue;
 
-            dgvSalary.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesSalary() +
-                "WHERE d.DepartmentID =" + departmentID +
-                " UNION ALL " +
-                "SELECT NULL, NULL, NULL, 'Всього', SUM(e.Salary) FROM Employees e " +
-                "join Departments d on e.DepartmentID=d.DepartmentID WHERE d.DepartmentID =" + departmentID); 
+            dgvSalary.DataSource = repoEmployees.GetSalary((int)departmentID);
         }
 
         private void bSaveTXT_Click(object sender, EventArgs e)
