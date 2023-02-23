@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using UkrPoshta.database;
 
 namespace UkrPoshta.repository
 {

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace UkrPoshta.repository
+namespace UkrPoshta.database
 {
     public interface IDBRepository
     {

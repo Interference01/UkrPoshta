@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Data;
+using System.Diagnostics;
 using UkrPoshta.database;
+using UkrPoshta.report;
 using UkrPoshta.repository;
 
 namespace UkrPoshta.forms
@@ -8,15 +10,14 @@ namespace UkrPoshta.forms
     {
         private readonly FormContoler formControler;
         private readonly IRepoEmployees repoEmployees;
-        private readonly IRepoPositions repoPositions;
         private readonly IRepoDepartaments repoDepartments;
+        private readonly IReport report;
 
-        public SalaryForm(FormContoler formControler, IRepoEmployees repoEmployees, IRepoPositions repoPositions, IRepoDepartaments repoDepartments)
+        public SalaryForm(FormContoler formControler, IRepoEmployees repoEmployees, IRepoDepartaments repoDepartments)
         {
             InitializeComponent();
             this.formControler = formControler;
             this.repoEmployees = repoEmployees;
-            this.repoPositions = repoPositions;
             this.repoDepartments = repoDepartments;
         }
 
@@ -38,23 +39,7 @@ namespace UkrPoshta.forms
 
         private void bSaveTXT_Click(object sender, EventArgs e)
         {
-            using (var streamWriter = new StreamWriter($"{Environment.CurrentDirectory}\\Звіт\\Звіт {DateTime.UtcNow: dd.mm.yyyy hh-mm-ss}.txt"))
-            {
-                for (int i = 0; i < dgvSalary.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < dgvSalary.Columns.Count; j++)
-                    {
-                        streamWriter.Write($"{dgvSalary.Rows[i].Cells[j].Value.ToString()}");
-
-                        if (!(j == dgvSalary.Columns.Count - 1))
-                        {
-                            streamWriter.Write("       ");
-                        }
-                    }
-                    streamWriter.WriteLine("\n");
-                }
-                streamWriter.Close();
-            }
+            report.WriteTable(dgvSalary.Columns, dgvSalary.Rows);
         }
 
         private void bOpenFolder_Click(object sender, EventArgs e)
