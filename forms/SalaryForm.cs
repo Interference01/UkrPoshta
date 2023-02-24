@@ -1,26 +1,30 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
+﻿using System.Data;
+using System.Diagnostics;
 using UkrPoshta.database;
+using UkrPoshta.report;
 using UkrPoshta.repository;
 
 namespace UkrPoshta.forms
 {
     public partial class SalaryForm : Form
     {
-        FormContoler formControler;
-        IRepository repository;
+        private readonly FormContoler formControler;
+        private readonly IRepoEmployees repoEmployees;
+        private readonly IRepoDepartaments repoDepartments;
+        private readonly IReport report;
 
-        public SalaryForm(FormContoler formControler, IRepository repository)
+        public SalaryForm(FormContoler formControler, IRepoEmployees repoEmployees, IRepoDepartaments repoDepartments)
         {
             InitializeComponent();
             this.formControler = formControler;
-            this.repository = repository;
+            this.repoEmployees = repoEmployees;
+            this.repoDepartments = repoDepartments;
         }
 
         private void SalaryForm_Load(object sender, EventArgs e)
         {
             //Settings combobox departments
-            cbDepartment.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromDepartments());
+            cbDepartment.DataSource = repoDepartments.GetDepartments();
             cbDepartment.ValueMember = "DepartmentID";
             cbDepartment.DisplayMember = "Name";
             cbDepartment.SelectedItem = null;
@@ -30,32 +34,12 @@ namespace UkrPoshta.forms
         {
             var departmentID = cbDepartment.SelectedValue;
 
-            dgvSalary.DataSource = repository.GetTableFromDatabase(GetString.SelectFromEmployeesSalary() +
-                "WHERE d.DepartmentID =" + departmentID +
-                " UNION ALL " +
-                "SELECT NULL, NULL, NULL, 'Всього', SUM(e.Salary) FROM Employees e " +
-                "join Departments d on e.DepartmentID=d.DepartmentID WHERE d.DepartmentID =" + departmentID); 
+            dgvSalary.DataSource = repoEmployees.GetSalary((int)departmentID);
         }
 
         private void bSaveTXT_Click(object sender, EventArgs e)
         {
-            using (var streamWriter = new StreamWriter($"{Environment.CurrentDirectory}\\Звіт\\Звіт {DateTime.UtcNow: dd.mm.yyyy hh-mm-ss}.txt"))
-            {
-                for (int i = 0; i < dgvSalary.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < dgvSalary.Columns.Count; j++)
-                    {
-                        streamWriter.Write($"{dgvSalary.Rows[i].Cells[j].Value.ToString()}");
-
-                        if (!(j == dgvSalary.Columns.Count - 1))
-                        {
-                            streamWriter.Write("       ");
-                        }
-                    }
-                    streamWriter.WriteLine("\n");
-                }
-                streamWriter.Close();
-            }
+            report.WriteTable(dgvSalary.Columns, dgvSalary.Rows);
         }
 
         private void bOpenFolder_Click(object sender, EventArgs e)

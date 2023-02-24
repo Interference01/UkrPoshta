@@ -6,14 +6,18 @@ namespace UkrPoshta.forms
 {
     public partial class UpdateForm : Form
     {
-        FormContoler formControler;
-        IRepository repository;
+        private readonly FormContoler formControler;
+        private readonly IRepoEmployees repoEmployees;
+        private readonly IRepoPositions repoPositions;
+        private readonly IRepoDepartaments repoDepartments;
 
-        public UpdateForm(FormContoler formControler, IRepository repository)
+        public UpdateForm(FormContoler formControler, IRepoEmployees repoEmployees, IRepoPositions repoPositions, IRepoDepartaments repoDepartments)
         {
             InitializeComponent();
             this.formControler = formControler;
-            this.repository = repository;
+            this.repoEmployees = repoEmployees;
+            this.repoPositions = repoPositions;
+            this.repoDepartments = repoDepartments;
         }
 
 
@@ -27,28 +31,15 @@ namespace UkrPoshta.forms
             DialogResult dialogResult = MessageBox.Show("Підтвердити зміни ?", "", MessageBoxButtons.YesNo); // зробити MessageBox красивішим
             if (dialogResult == DialogResult.Yes)
             {
-                repository.UpdateTables(GetString.SelectAllFromEmployees(), dgvEmployee.DataSource as DataTable);
-                repository.UpdateTables(GetString.SelectAllFromPositions(), dgvPosition.DataSource as DataTable);
-                repository.UpdateTables(GetString.SelectAllFromDepartments(), dgvDepartment.DataSource as DataTable);
+                repoEmployees.UpdateTableEmployees(dgvEmployee.DataSource as DataTable);
+                repoPositions.UpdateTablePositions(dgvPosition.DataSource as DataTable);
+                repoDepartments.UpdateTableDepartments(dgvDepartment.DataSource as DataTable);
                 GetAllTables();
             }
             else if (dialogResult == DialogResult.No)
             {
                 GetAllTables();
             }
-        }
-
-        private void GetAllTables()
-        {
-            dgvEmployee.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromEmployees());
-            dgvPosition.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromPositions());
-            dgvDepartment.DataSource = repository.GetTableFromDatabase(GetString.SelectAllFromDepartments());
-
-            // Set width for ID column
-            DataGridViewColumn columnPosition = dgvPosition.Columns[0];
-            columnPosition.Width = 60;
-            DataGridViewColumn columnDepartments = dgvDepartment.Columns[0];
-            columnDepartments.Width = 60;
         }
 
         private void bBack_Click(object sender, EventArgs e)
@@ -59,6 +50,19 @@ namespace UkrPoshta.forms
         private void bRefresh_Click(object sender, EventArgs e)
         {
             GetAllTables();
+        }
+
+        private void GetAllTables()
+        {
+            dgvEmployee.DataSource = repoEmployees.GetEmployees();
+            dgvPosition.DataSource = repoPositions.GetPositions();
+            dgvDepartment.DataSource = repoDepartments.GetDepartments();
+
+            // Set width for ID column
+            DataGridViewColumn columnPosition = dgvPosition.Columns[0];
+            columnPosition.Width = 60;
+            DataGridViewColumn columnDepartments = dgvDepartment.Columns[0];
+            columnDepartments.Width = 60;
         }
     }
 }

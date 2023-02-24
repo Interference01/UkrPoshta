@@ -32,13 +32,14 @@
             bEmployees = new Button();
             bUpdate = new Button();
             bSalary = new Button();
+            tbInfo = new TextBox();
             SuspendLayout();
             // 
             // lTop
             // 
             lTop.AutoSize = true;
             lTop.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lTop.Location = new Point(138, 9);
+            lTop.Location = new Point(317, 9);
             lTop.Name = "lTop";
             lTop.Size = new Size(193, 25);
             lTop.TabIndex = 0;
@@ -47,7 +48,7 @@
             // bEmployees
             // 
             bEmployees.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bEmployees.Location = new Point(156, 197);
+            bEmployees.Location = new Point(115, 159);
             bEmployees.Name = "bEmployees";
             bEmployees.Size = new Size(175, 60);
             bEmployees.TabIndex = 1;
@@ -58,7 +59,7 @@
             // bUpdate
             // 
             bUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bUpdate.Location = new Point(156, 289);
+            bUpdate.Location = new Point(115, 251);
             bUpdate.Name = "bUpdate";
             bUpdate.Size = new Size(175, 60);
             bUpdate.TabIndex = 2;
@@ -69,7 +70,7 @@
             // bSalary
             // 
             bSalary.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bSalary.Location = new Point(156, 379);
+            bSalary.Location = new Point(115, 341);
             bSalary.Name = "bSalary";
             bSalary.Size = new Size(175, 60);
             bSalary.TabIndex = 3;
@@ -77,11 +78,24 @@
             bSalary.UseVisualStyleBackColor = true;
             bSalary.Click += bSalary_Click;
             // 
+            // tbInfo
+            // 
+            tbInfo.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            tbInfo.Location = new Point(386, 79);
+            tbInfo.Multiline = true;
+            tbInfo.Name = "tbInfo";
+            tbInfo.ReadOnly = true;
+            tbInfo.Size = new Size(503, 444);
+            tbInfo.TabIndex = 4;
+            tbInfo.Text = "Укрпошта";
+            tbInfo.TextAlign = HorizontalAlignment.Center;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(507, 592);
+            ClientSize = new Size(922, 535);
+            Controls.Add(tbInfo);
             Controls.Add(bSalary);
             Controls.Add(bUpdate);
             Controls.Add(bEmployees);
@@ -90,6 +104,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UkrPoshta";
+            Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -100,5 +115,6 @@
         private Button bEmployees;
         private Button bUpdate;
         private Button bSalary;
+        private TextBox tbInfo;
     }
 }
