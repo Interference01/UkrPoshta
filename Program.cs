@@ -12,7 +12,7 @@ namespace UkrPoshta
         [STAThread]
         static void Main()
         {
-            ApplicationConfiguration.Initialize(); // Зробити вимикання програми ы запуск знов при натисканні кнопки "НАЗАД"
+            ApplicationConfiguration.Initialize();
 
             var formControler = new FormContoler();
             var connection = new DBRepository();
